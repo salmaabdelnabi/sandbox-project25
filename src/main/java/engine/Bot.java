@@ -17,4 +17,8 @@ public class Bot {
     public void quit(){
         driver.quit();
     }
+
+    public void navigateToUrl(String url){
+        driver.navigate().to(url);
+    }
 }
