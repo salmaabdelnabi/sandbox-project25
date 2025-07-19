@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pages.DuckDuckGo;
 
 @Test
-public class SampleTests extends TestCase{
+public class PracticeTests extends TestCase{
 
     //Workshop Task #3
     public void navigateToDuckDuckGoSearchForSeleniumWebDriverAssertFirstResult(){
