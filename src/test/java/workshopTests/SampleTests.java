@@ -6,11 +6,12 @@ import pages.DuckDuckGo;
 
 @Test
 public class SampleTests extends TestCase{
+
     //Workshop Task #3
     public void navigateToDuckDuckGoSearchForSeleniumWebDriverAssertFirstResult(){
         DuckDuckGo duckDuckGo = new DuckDuckGo(bot);
         duckDuckGo.navigate();
         duckDuckGo.search("Selenium WebDriver");
-//        Assert.assertEquals(duckDuckGo.getFirstSearchResultLink(), "https://www.selenium.dev/documentation/webdriver/");
+        Assert.assertEquals(duckDuckGo.getSearchResultLink(1), "https://www.selenium.dev/documentation/webdriver/");
     }
 }

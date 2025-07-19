@@ -1,7 +1,7 @@
 package engine;
 
-import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -16,8 +16,9 @@ public class Bot {
     public Bot(){
         driver = new ChromeDriver();
         wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(300));
+                .withTimeout(Duration.ofSeconds(2))
+                .pollingEvery(Duration.ofMillis(300))
+                .ignoring(NoSuchElementException.class);
     }
 
     public void quit(){
@@ -34,7 +35,7 @@ public class Bot {
         searchBox.submit();
     }
 
-    public @Nullable String getHref(By elementLocator){
+    public String getHref(By elementLocator){
         return wait.until(d -> d.findElement(elementLocator).getAttribute("href"));
     }
 }

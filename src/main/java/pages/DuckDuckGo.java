@@ -4,13 +4,11 @@ import engine.Bot;
 import org.openqa.selenium.By;
 
 public class DuckDuckGo {
-    String url;
-    Bot bot;
-    By duckDuckGoSearchBoxLocator = By.id("searchbox_input");
-    By firstSearchResultLinkLocator = By.xpath("(//a[@data-testid='result-extras-url-link'])[1]");
+    private static final String url = "https://duckduckgo.com/";
+    private final Bot bot;
+    private static final By duckDuckGoSearchBoxLocator = By.id("searchbox_input");
 
     public DuckDuckGo(Bot bot){
-        url = "https://duckduckgo.com/";
         this.bot = bot;
     }
 
@@ -22,7 +20,8 @@ public class DuckDuckGo {
         bot.searchFor(duckDuckGoSearchBoxLocator, text);
     }
 
-    public String getFirstSearchResultLink(){
-        return bot.getHref(firstSearchResultLinkLocator);
+    public String getSearchResultLink(int index){
+        By searchResultLinkLocator = By.xpath("(//a[@data-testid='result-extras-url-link'])["+index+"]");
+        return bot.getHref(searchResultLinkLocator);
     }
 }
