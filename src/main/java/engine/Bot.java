@@ -38,4 +38,22 @@ public class Bot {
     public String getHref(By elementLocator){
         return wait.until(d -> d.findElement(elementLocator).getAttribute("href"));
     }
+
+    public void checkCheckbox(By checkboxLocator) {
+        var checkbox = driver.findElement(checkboxLocator);
+        if (!checkbox.isSelected()) {
+            checkbox.click();
+        }
+    }
+
+    public void uncheckCheckbox(By checkboxLocator) {
+        var checkbox = driver.findElement(checkboxLocator);
+        if (checkbox.isSelected()) {
+            checkbox.click();
+        }
+    }
+
+    public boolean isCheckboxChecked(By checkboxLocator) {
+        return driver.findElement(checkboxLocator).isSelected();
+    }
 }
